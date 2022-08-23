@@ -9,7 +9,8 @@ open class Video(
     val description: String,
     val duration: Int,
     val url: String,
-    val date: Int
+    val date: Int,
+    override val type: String = "video"
 ) : Attachments {
 
     override fun toString(): String {
@@ -19,14 +20,11 @@ open class Video(
 
 class VideoAttachment(
     id: Int,
-    ownerId: Int,
-    title: String,
-    description: String,
-    duration: Int,
-    url: String,
-    date: Int,
-    val type: String = "Video"
+    val video: Video,
+    override val type: String = "Video"
 ) :
-    Video(id, ownerId, title, description, duration, url, date) {
-
+    Attachments {
+    override fun toString(): String {
+        return video.toString()
+    }
 }

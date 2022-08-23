@@ -2,26 +2,28 @@ package attachments
 
 import Attachments
 
-open class Audio(
+class Audio(
     val id: Int,
     val ownerId: Int,
     val artist: String,
     val title: String,
-    val url: String
+    val url: String,
+    override val type: String = "audio"
 ) : Attachments {
-}
 
-class AudioAttachment(
-    id: Int,
-    ownerId: Int,
-    artist: String,
-    title: String,
-    url: String,
-    val type: String = "audio"
-) :
-    Audio(id, ownerId, artist, title, url) {
     override fun toString(): String {
         return "$artist - $title"
+    }
+}
+
+data class AudioAttachment(
+    val id: Int,
+    val audio: Audio,
+    override val type: String = "audio"
+) :
+    Attachments {
+    override fun toString(): String {
+        return audio.toString()
     }
 
 }

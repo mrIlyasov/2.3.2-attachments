@@ -8,21 +8,18 @@ open class File(
     val size: Int,
     val title: String,
     val url: String,
-    val ext: String
+    val ext: String,
+    override val type: String = "file"
 ) : Attachments {
     override fun toString(): String {
         return ("Владелец: $ownerId , Размер файла: $size , Название: $title , Тип файла: $ext")
     }
 }
 
-class FileAttchment(
-    id: Int,
-    ownerId: Int,
-    size: Int,
-    title: String,
-    url: String,
-    ext: String,
-    type: String = "File"
-) : File(id, ownerId, size, title, url, ext) {
+data class FileAttchment(
+    val id: Int,
+    val file: File,
+    override val type: String = "file"
+) : Attachments {
 
 }

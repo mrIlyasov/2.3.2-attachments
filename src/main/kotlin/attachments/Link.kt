@@ -6,6 +6,7 @@ open class Link(
     val caption: String,
     val url: String,
     val description: String,
+    override val type: String = "link"
 ) : Attachments {
 
     override fun toString(): String {
@@ -13,8 +14,11 @@ open class Link(
     }
 }
 
-class LinkAttachment(
-    caption: String,
-    url: String,
-    description: String
-) : Link(caption, url, description) {}
+data class LinkAttachment(
+    val caption: String,
+    val url: String,
+    val description: String,
+    override val type: String = "link"
+) : Attachments {
+
+}

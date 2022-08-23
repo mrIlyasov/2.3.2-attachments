@@ -7,7 +7,8 @@ open class Photo(
     val ownerId: Int,
     val albumId: Int,
     val text: String,
-    val date: Int
+    val date: Int,
+    override val type: String = "photo"
 ) : Attachments {
 
     override fun toString(): String {
@@ -15,13 +16,13 @@ open class Photo(
     }
 }
 
-class PhotoAtachment(
-    id: Int,
-    ownerId: Int,
-    albumId: Int,
-    text: String,
-    date: Int,
-    val type: String = "photo"
-) : Photo(id, ownerId, albumId, text, date) {
+data class PhotoAtachment(
+    val id: Int,
+    val ownerId: Int,
+    val albumId: Int,
+    val text: String,
+    val date: Int,
+    override val type: String = "photo"
+) : Attachments {
 
 }
